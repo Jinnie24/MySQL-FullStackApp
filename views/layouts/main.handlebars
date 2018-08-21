@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+		<title>Eat-da-burger!</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Merienda" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<style>
+            .form-group {margin: auto; width: 10%; margin-bottom: 10px; font-family: 'Merienda', cursive;}
+			.burger-name {margin-bottom: 7px; font-family: 'Gloria Hallelujah', cursive; font-size: 20px;}
+            h1, h3   {font-family: 'Merienda', cursive;}
+            p    {font-family: 'Merienda', cursive;}
+    </style>
+	</head>
+	<body background="https://thumbs.dreamstime.com/b/green-vintage-wallpaper-design-floral-decorative-holiday-background-61097295.jpg">
+		{{{ body }}}
+		<script>
+			$(function() {
+				$(".burger-available").on("click", function(event) {
+					var id = $(this).data("id");
+					var newDevouredState = {
+						devoured: true
+					};
+
+					$.ajax("/burgers/" + id, {
+						type: "PUT",
+						data: newDevouredState
+						}).then(
+						function() {
+							console.log("changed devoured to", " true");
+							// Reload the page to get the updated list
+							location.reload();
+						});
+				});
+			});
+		</script>
+	</body>
+</html>

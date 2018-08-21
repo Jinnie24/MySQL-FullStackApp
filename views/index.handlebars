@@ -1,0 +1,62 @@
+
+
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <h1>Eat-Da-Burger!</h1>
+        <img class="align-self-center mr-3" src="https://i1.wp.com/clipartwork.com/wp-content/uploads/2017/02/food-plate-clipart.png" width="800" height="400">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col sm-6 text-center">
+        <h3>Burgers created:</h3>
+        {{#each burgers}}
+          {{#unless this.devoured}}
+            <div>
+              <form>
+                <div class="burger-name">
+                  {{this.burger_name}}
+                  <br>
+                  <button type="submit" class="btn-outline-success burger-available" data-id="{{this.id}}"> Devoure it! </button>
+                </div>
+              </form>
+            </div>
+          {{/unless}}
+        {{/each}}
+      </div>
+
+      <div class="col sm-6 text-center">
+        <h3>Burgers devoured:</h3>
+        {{#each burgers}}
+          {{#if this.devoured}}
+            <div class='burgerEaten'>
+              <div class="burger-name">
+                {{this.burger_name}}
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<div class="row">
+  <div class="col sm-12 text-center">
+    <h3>You can create your own delicious burger</h3>
+    <p>Create your own burger</p>
+    <form action="/burgers" method="POST">
+      <div class="form-group">
+        <div class="form-row">
+          <div class "col align-self-center">
+            <input type="text" class="form-control" id="name" name="burger_name" placeholder="Yammi">
+            <br>
+            <button type="submit" class="btn btn-success" class="addBurger">Add Burger</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
